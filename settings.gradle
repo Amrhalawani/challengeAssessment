@@ -3,6 +3,9 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+
+
+
     }
 }
 dependencyResolutionManagement {
@@ -10,8 +13,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+
     }
 }
-rootProject.name = "Carefer"
+rootProject.name = "AndroidChallange-Amrh"
 include ':app'
 include ':data'

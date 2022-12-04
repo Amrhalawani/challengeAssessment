@@ -65,13 +65,15 @@ data class Match(
 
     @PrimaryKey
     @field:SerializedName("id")
-    val id: Int? = null,
+    val id: Int,
 
     @field:SerializedName("referees")
     val referees: List<RefereesItem?>? = null,
 
     @field:SerializedName("status")
     val status: String? = null,
+
+    var isFavorite: Boolean = false,
 
     )
 

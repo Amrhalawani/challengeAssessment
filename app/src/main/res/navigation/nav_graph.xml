@@ -3,26 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/navigation_matches">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.amrh.carefer.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/navigation_matches"
+        android:name="com.amrh.challenge.matches.MatchesFragment"
+        android:label="@string/matches"
+        tools:layout="@layout/fragment_matches">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_navigation_matches_to_favoritesMatchesFragment"
+            app:destination="@id/favoritesMatchesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.amrh.carefer.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/favoritesMatchesFragment"
+        android:name="com.amrh.challenge.favoriteMatches.FavoritesMatchesFragment"
+        android:label="fragment_favorites_matches"
+        tools:layout="@layout/fragment_favorites_matches" />
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
 </navigation>

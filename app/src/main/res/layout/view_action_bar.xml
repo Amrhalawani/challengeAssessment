@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+
+    android:background="@drawable/background_gradient">
+
+    <LinearLayout
+        android:id="@+id/ll_show_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:animateLayoutChanges="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_show_fav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/show_favorites"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_show_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:src="@drawable/ic_favorite_selected"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/btn_show_favorites"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:tint="@color/color_accent" />
+    </LinearLayout>
+
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_show_favorites"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_marginHorizontal="10dp"-->
+    <!--        android:layout_marginVertical="6dp"-->
+    <!--        android:backgroundTint="@color/color_accent"-->
+    <!--        android:drawableEnd="@drawable/ic_baseline_bookmark_added_24"-->
+    <!--        android:drawableTint="@color/color_main"-->
+    <!--        android:fontFamily="@font/main_font_bold"-->
+    <!--        android:text="@string/show_favorites"-->
+    <!--        android:textColor="@color/color_main"-->
+    <!--        android:textSize="10sp"-->
+    <!--        card_view:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        card_view:layout_constraintEnd_toEndOf="parent"-->
+    <!--        card_view:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pl"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:tint="@color/color_accent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

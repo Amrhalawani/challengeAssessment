@@ -1,9 +1,18 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.Carefer" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.Challenge" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_main</item>
+        <item name="colorPrimaryDark">@color/color_main</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:fontFamily">@font/main_font_bold</item>
+        <item name="android:windowTranslucentStatus">true</item>
+
+        //above lavel 23
+        <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
-    <style name="Theme.Carefer" parent="Base.Theme.Carefer" />
+    <style name="Theme.Challenge" parent="Base.Theme.Challenge" />
 </resources>

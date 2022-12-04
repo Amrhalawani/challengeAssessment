@@ -98,8 +98,7 @@ class MatchesDatabaseTest {
             FakeMatchResource(3, "2010-10-31T12:30:00Z"),
             FakeMatchResource(4, "2022-10-31T12:30:00Z"),
             FakeMatchResource(5, "2022-12-01T12:30:00Z"),
-
-            )
+        )
 
         favDao.insertMatchesList(entites)
 
@@ -107,6 +106,7 @@ class MatchesDatabaseTest {
 
         //expected
         val expected = listOf(5, 4, 1, 2, 3)
+
         //actual
         val actual = favSavedMatchesList.sortedByDescending { it.utcDate }.map { it.id }
 
