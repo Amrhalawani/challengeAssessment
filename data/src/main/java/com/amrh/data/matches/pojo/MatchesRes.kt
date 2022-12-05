@@ -12,11 +12,8 @@ data class MatchesRes(
     @field:SerializedName("competition")
     val competition: Competition? = null,
 
-//	@field:SerializedName("filters")
-//	val filters: Filters? = null,
-
     @field:SerializedName("matches")
-    val matches: List<Match?>? = null,
+    var matches: List<Match> = listOf(),
 
     @field:SerializedName("message")
     val message: String? = null,
@@ -24,6 +21,7 @@ data class MatchesRes(
     @field:SerializedName("errorCode")
     val errorCode: String? = null,
 )
+
 
 @Entity
 data class Team(
@@ -35,6 +33,12 @@ data class Team(
     @field:SerializedName("id")
     val id: Int? = null
 )
+
+
+data class GroupedMatches(
+    val value: Map<String, List<Match>> = mapOf(),
+)
+
 
 @Entity
 data class Match(

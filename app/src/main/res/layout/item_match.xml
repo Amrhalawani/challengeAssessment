@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="3dp"
+    android:layout_margin="5dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="10dp">
 
@@ -31,6 +31,7 @@
                 android:id="@+id/text_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/grayDark"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/saturday"
                 android:textSize="10sp" />
@@ -41,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="4dp"
+                android:textColor="@color/grayDark"
                 android:fontFamily="@font/cairo_regular"
                 android:text="@string/_16_00"
                 android:textSize="9sp" />
@@ -52,8 +54,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/main_font_reguler"
+                android:textColor="@color/black"
                 android:text="0 - 3"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
 
@@ -66,7 +69,9 @@
             android:ellipsize="end"
             android:gravity="center"
             android:hint="@string/team_name_one"
-            android:maxLines="1"
+            android:maxLines="2"
+            android:layout_marginHorizontal="4dp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout7"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout7"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +79,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:paddingHorizontal="2dp"
             android:textAllCaps="false"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
 
 
@@ -86,12 +91,15 @@
             android:ellipsize="end"
             android:gravity="center"
             android:hint="@string/team_two"
-            android:maxLines="1"
+            android:fontFamily="@font/main_font_bold"
+            android:maxLines="2"
+            android:textColor="@color/black"
+
+            android:layout_marginHorizontal="4dp"
             android:textAllCaps="false"
-            android:textSize="12sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout7"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/linearLayout7"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.6" />
@@ -125,7 +133,7 @@
             android:paddingVertical="4dp"
             android:text="@string/premier_league"
             android:textColor="@color/color_main_light"
-            android:textSize="8sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view5" />
@@ -139,7 +147,7 @@
             android:paddingVertical="2dp"
             android:text="@string/week"
             android:textColor="@color/gray"
-            android:textSize="8sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view5" />

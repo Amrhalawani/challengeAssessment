@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="16dp"
+    android:layout_margin="10dp"
     app:cardBackgroundColor="@color/color_main"
     app:cardCornerRadius="10dp">
 
@@ -17,11 +17,12 @@
         <TextView
             android:id="@+id/text_day"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:background="@color/color_main"
             android:fontFamily="@font/main_font_reguler"
             android:gravity="center"
-            android:text="2022-12-3"
+            tools:text="2022-12-3"
+
             android:textColor="@color/color_accent"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_matches"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

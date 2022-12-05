@@ -47,6 +47,7 @@ import com.amrh.data.matches.pojo.isMatchFinished
 //            binding.textMatchState.text = getTimeFormattedHHMM(item.utcDate!!)
 //        }
 //    }
-//}
+//
+// }
 
 

@@ -8,6 +8,7 @@ import androidx.test.filters.SmallTest
 import app.cash.turbine.test
 import com.amrh.data.matches.local.db.FavoriteMatchesDao
 import com.amrh.data.matches.local.db.MatchesDatabase
+import com.amrh.data.matches.pojo.FakeMatchResource
 import com.amrh.data.matches.pojo.Match
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -16,24 +17,6 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-
-
-private fun FakeMatchResource(
-    id: Int,
-    date: String,
-) = Match(
-    matchday = 1,
-    awayTeam = null,
-    utcDate = date,
-    lastUpdated = null,
-    score = null,
-    stage = null,
-    season = null,
-    homeTeam = null,
-    id = id,
-    referees = listOf(),
-    status = null
-)
 
 
 @RunWith(AndroidJUnit4::class)
