@@ -97,6 +97,6 @@ feedbacks and hints are always welcome!
 ## screenshots
 
 <p float="left" align="middle">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" width="32%" />
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" width="32%" /> 
+  <img src="https://github.com/Amrhalawani/challengeAssessment/blob/master/screenshots/matches.jpeg" width="32%" />
+  <img src="https://github.com/Amrhalawani/challengeAssessment/blob/master/screenshots/fav.jpeg" width="32%" /> 
 </p>
