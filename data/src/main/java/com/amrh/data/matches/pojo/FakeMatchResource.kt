@@ -1,9 +1,10 @@
 package com.amrh.data.matches.pojo
 
 
- fun FakeMatchResource(
+fun FakeMatchResource(
     id: Int,
     date: String,
+    isFavorite: Boolean = false
 ) = Match(
     matchday = 1,
     awayTeam = null,
@@ -15,5 +16,7 @@ package com.amrh.data.matches.pojo
     homeTeam = null,
     id = id,
     referees = listOf(),
-    status = null
+    status = null,
+    isFavorite = isFavorite
 )
+

@@ -13,18 +13,10 @@
         android:layout_height="match_parent"
 
         >
-
         <TextView
             android:id="@+id/text_day"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/color_main"
-            android:fontFamily="@font/main_font_reguler"
-            android:gravity="center"
+            style="@style/textDayStyle"
             tools:text="2022-12-3"
-
-            android:textColor="@color/color_accent"
-            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

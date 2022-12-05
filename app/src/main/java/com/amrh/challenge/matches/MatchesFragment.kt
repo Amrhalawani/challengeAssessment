@@ -1,6 +1,7 @@
 package com.amrh.challenge.matches
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.amrh.challenge.databinding.FragmentMatchesBinding
 import com.amrh.challenge.matches.matchesAdaptors.MatchesSectionedByDateAdapter
-import com.amrh.challenge.utils.gone
-import com.amrh.challenge.utils.showToast
-import com.amrh.challenge.utils.visible
+import com.amrh.challenge.utils.*
 import com.amrh.data.matches.pojo.Match
 import com.amrh.data.matches.remote.Result
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,13 +42,17 @@ class MatchesFragment : Fragment(), MatchesSectionedByDateAdapter.MatchesSection
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        setupAdaptor()
-
-
         observeMatches()
-
+        observeFavoritesMatchesIDs()
+        setupAdaptor()
         listeners()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        actionAfter(1000) { sendIntentFavIds() }
 
     }
 
@@ -62,7 +65,6 @@ class MatchesFragment : Fragment(), MatchesSectionedByDateAdapter.MatchesSection
         binding.include.llShowFav.setOnClickListener {
             findNavController().navigate(MatchesFragmentDirections.actionNavigationMatchesToFavoritesMatchesFragment())
         }
-
     }
 
     override fun onDestroyView() {
@@ -77,8 +79,10 @@ class MatchesFragment : Fragment(), MatchesSectionedByDateAdapter.MatchesSection
             showProgress(false)
             when (result) {
                 is Result.Success -> {
-                    context?.showToast(result.data.value.keys.toString())
+
                     adapter.updateMatchesMap(result.data.value)
+
+                    scrollToCurrentDate(result.data.value)
                 }
                 is Result.Loading -> {
                     showProgress(true)
@@ -88,6 +92,39 @@ class MatchesFragment : Fragment(), MatchesSectionedByDateAdapter.MatchesSection
                 }
             }
         }
+    }
+
+    private fun scrollToCurrentDate(value: Map<String, List<Match>>): Int {
+        val currentDate= getCurrentDateUnixTime()
+        var position = 0
+        value.values.flatten().map {
+            formatToUnixTimeBackEndFormation(it.utcDate!!)
+        }.forEachIndexed{ index, date ->
+            if (date!! >= currentDate!!){
+                position = index+1
+                return position
+            }
+        }
+        return position
+        //  binding.rvAllMatches?.scrollToPosition(position)
+    }
+
+    private fun observeFavoritesMatchesIDs() {
+        showProgress(true)
+        viewModel.stateFavoritesMatchesIds.observe(viewLifecycleOwner) { result ->
+            showProgress(false)
+            adapter.updateMatchesMap(
+                viewModel.convertMatchesFavStatesDependsOnIds(
+                    result as MutableList<Int>,
+                    adapter.sectionedByDateMap
+                )
+            )
+            Log.e("TAG", "observeFavoritesMatchesIDs: ${result.toString()}")
+        }
+    }
+
+    private fun sendIntentFavIds() {
+        viewModel.getFavoriteMatchesIds()
     }
 
     private fun addFavoriteMatch(match: Match) {
@@ -110,12 +147,10 @@ class MatchesFragment : Fragment(), MatchesSectionedByDateAdapter.MatchesSection
     }
 
     override fun onClicked(match: Match, isFavorite: Boolean) {
-        context?.showToast("$isFavorite")
         if (isFavorite) {
             addFavoriteMatch(match)
         } else {
             removeFavoriteMatch(match)
-
         }
     }
 }

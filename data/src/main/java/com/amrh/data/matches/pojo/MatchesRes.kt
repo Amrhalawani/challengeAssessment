@@ -43,6 +43,11 @@ data class GroupedMatches(
 @Entity
 data class Match(
 
+    @PrimaryKey
+    @field:SerializedName("id")
+    var id: Int,
+
+    
     @field:SerializedName("matchday")
     val matchday: Int? = null,
 
@@ -67,9 +72,7 @@ data class Match(
     @field:SerializedName("homeTeam")
     val homeTeam: Team? = null,
 
-    @PrimaryKey
-    @field:SerializedName("id")
-    val id: Int,
+
 
     @field:SerializedName("referees")
     val referees: List<RefereesItem?>? = null,

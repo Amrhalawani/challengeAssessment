@@ -27,6 +27,23 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
+@Module
+@InstallIn(SingletonComponent::class)
+object DatabaseModule {
+    @Provides
+    @Singleton
+    fun providesMatchesDatabase(
+        @ApplicationContext context: Context,
+    ): MatchesDatabase = Room.databaseBuilder(
+        context,
+        MatchesDatabase::class.java,
+        "f_da"
+    ).build()
+}
+
+
+
 @Module
 @InstallIn(SingletonComponent::class)
 object DaosModule {
@@ -37,16 +54,3 @@ object DaosModule {
 
 }
 
-@Module
-@InstallIn(SingletonComponent::class)
-object DatabaseModule {
-    @Provides
-    @Singleton
-    fun providesNiaDatabase(
-        @ApplicationContext context: Context,
-    ): MatchesDatabase = Room.databaseBuilder(
-        context,
-        MatchesDatabase::class.java,
-        "f_da"
-    ).build()
-}

@@ -21,11 +21,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amrh.data.matches.MatchesUseCases
+import com.amrh.data.matches.repo.MatchesUseCases
 import com.amrh.data.matches.pojo.Match
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -35,7 +34,8 @@ class FavoriteMatchesViewModel @Inject constructor(
 ) : ViewModel() {
 
     //mutable able to change
-    private val _stateFavoritesMatches: MutableLiveData<Map<String, List<Match>>> = MutableLiveData()
+    private val _stateFavoritesMatches: MutableLiveData<Map<String, List<Match>>> =
+        MutableLiveData()
 
     //just for observing
     val stateFavoritesMatches: LiveData<Map<String, List<Match>>> = _stateFavoritesMatches
@@ -43,16 +43,17 @@ class FavoriteMatchesViewModel @Inject constructor(
     init {
         getFavoriteMatches()
     }
+
     private fun getFavoriteMatches() {
         viewModelScope.launch(Dispatchers.IO) {
-            matchesUseCase.getFavoriteMatches().collectLatest {
+            matchesUseCase.getFavoriteMatches().collect {
                 _stateFavoritesMatches.postValue(it)
             }
         }
     }
 
-    private fun removeFavoriteMatch(match: Match) {
-        viewModelScope.launch (Dispatchers.IO){
+     fun removeFavoriteMatch(match: Match) {
+        viewModelScope.launch(Dispatchers.IO) {
             matchesUseCase.removeFavoriteMatch(match)
         }
     }

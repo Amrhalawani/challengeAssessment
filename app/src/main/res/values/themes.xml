@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Challenge" parent="Theme.Material3.DayNight.NoActionBar">
 
@@ -7,12 +7,67 @@
         <item name="colorPrimaryDark">@color/color_main</item>
         <item name="colorAccent">@color/color_accent</item>
         <item name="android:fontFamily">@font/main_font_bold</item>
-        <item name="android:windowTranslucentStatus">true</item>
-
-        //above lavel 23
-        <item name="android:windowLightStatusBar">true</item>
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+<!--<!-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>&ndash;&gt;-->
 
     </style>
 
     <style name="Theme.Challenge" parent="Base.Theme.Challenge" />
+
+
+    <style name="RippleEffect">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+
+    <style name="MatchesRecyclerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="textDayStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@color/color_main</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/main_font_reguler</item>
+        <item name="android:textColor">@color/color_accent</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+
+    <style name="textTeamNameStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:hint">@string/team_name_one</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">4dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">2dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
+    <style name="textPremierLeagueStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">6dp</item>
+        <item name="android:text">@string/premier_league</item>
+        <item name="android:textColor" tools:targetApi="o">@color/color_main_light</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
 </resources>

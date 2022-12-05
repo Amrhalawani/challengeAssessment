@@ -13,6 +13,9 @@ interface FavoriteMatchesDao {
     @Query("SELECT * FROM `Match` where id=:matchId")
     fun selectFavoriteMatch(matchId: String): Flow<Match>
 
+    @Query("SELECT id FROM `Match`")
+    fun selectFavoriteMatchIDs(): Flow<List<Int>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMatch(match: Match)
 

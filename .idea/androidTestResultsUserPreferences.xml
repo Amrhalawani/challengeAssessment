@@ -16,6 +16,20 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-874111335">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="Xiaomi&#10; Redmi Note 9 Pro" value="120" />
+                  <entry key="adb-1e034aaf-rtXwVr._adb-tls-connect._tcp." value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-640161057">
           <value>
             <AndroidTestResultsTableState>
@@ -50,6 +64,20 @@
                 <map>
                   <entry key="Duration" value="90" />
                   <entry key="Low_res_API_30" value="120" />
+                  <entry key="Tests" value="360" />
+                  <entry key="Xiaomi&#10; Redmi Note 9 Pro" value="120" />
+                  <entry key="adb-1e034aaf-rtXwVr._adb-tls-connect._tcp." value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="1385262748">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
                   <entry key="Tests" value="360" />
                   <entry key="Xiaomi&#10; Redmi Note 9 Pro" value="120" />
                   <entry key="adb-1e034aaf-rtXwVr._adb-tls-connect._tcp." value="120" />

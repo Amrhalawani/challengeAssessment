@@ -9,15 +9,19 @@ import javax.inject.Singleton
 @Singleton
 class LocalMatchesDataSource @Inject constructor(private val favoriteMatchesDao: FavoriteMatchesDao) {
 
-    suspend fun fetchFavoritesMatches(): Flow<List<Match>> {
+     fun fetchFavoritesMatches(): Flow<List<Match>> {
         return favoriteMatchesDao.selectAllFavoriteMatchesList()
     }
 
-    suspend fun addFavoriteMatch(match: Match) {
+    fun fetchFavoriteMatchIDs(): Flow<List<Int>> {
+        return favoriteMatchesDao.selectFavoriteMatchIDs()
+    }
+
+     fun addFavoriteMatch(match: Match) {
         favoriteMatchesDao.insertMatch(match)
     }
 
-    suspend fun removeFavoriteMatch(match: Match) {
+     fun removeFavoriteMatch(match: Match){
         favoriteMatchesDao.deleteFavoriteMatch(match)
     }
 }

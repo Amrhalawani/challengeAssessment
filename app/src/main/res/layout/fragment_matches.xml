@@ -18,13 +18,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_all_matches"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_matches_sectioned_by_day" />
+            style="@style/MatchesRecyclerStyle"
+            tools:listitem="@layout/item_matches_sectioned_by_day"
+            tools:ignore="MissingConstraints" />
 
 
         <com.airbnb.lottie.LottieAnimationView
@@ -37,14 +33,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_url="https://assets5.lottiefiles.com/packages/lf20_m1cxkbt2.json" />
+            app:lottie_rawRes="@raw/progress" />
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/animationView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:lottie_rawRes="@raw/animation"-->
-<!--            app:lottie_autoPlay="true"-->
-<!--            app:lottie_loop="true"/>-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

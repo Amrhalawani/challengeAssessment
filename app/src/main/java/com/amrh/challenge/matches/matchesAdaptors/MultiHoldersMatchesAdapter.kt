@@ -11,8 +11,6 @@ import javax.inject.Inject
 
 class MultiHoldersMatchesAdapter @Inject constructor(var itemClickListener: ((view: View, item: Match, position: Int, isFavorite:Boolean) -> Unit)? ) : RecyclerView.Adapter<MatchesRecyclerViewHolder>() {
 
-  // lateinit var mListener: MultiHoldersFavoritesListener
-
     var list: List<Match>? = arrayListOf()
 
     fun updateList(newList: List<Match>?) {
@@ -22,10 +20,9 @@ class MultiHoldersMatchesAdapter @Inject constructor(var itemClickListener: ((vi
         }
     }
 
-    fun updateMatchItem(match: Match, isFavorite:Boolean, position: Int) {
+    fun updateMatchViewItem(match: Match, isFavorite:Boolean, position: Int) {
         match.isFavorite = isFavorite
         notifyItemChanged(position)
-        notifyDataSetChanged()
     }
 
     override fun getItemViewType(position: Int): Int {

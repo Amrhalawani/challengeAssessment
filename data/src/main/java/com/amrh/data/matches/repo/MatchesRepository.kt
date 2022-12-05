@@ -1,4 +1,4 @@
-package com.amrh.data.matches
+package com.amrh.data.matches.repo
 
 import com.amrh.data.matches.local.LocalMatchesDataSource
 import com.amrh.data.matches.pojo.Match
@@ -10,22 +10,26 @@ import javax.inject.Inject
 class MatchesRepository @Inject constructor(
     private val localMatchesDS: LocalMatchesDataSource,
     private val remoteMatchesDS: RemoteMatchesDataSource
-) {
+) : MatchesRepositoryInterface {
 
 
-    suspend fun getFavoritesMatches(): Flow<List<Match>> {
+    override fun getFavoritesMatches(): Flow<List<Match>> {
         return localMatchesDS.fetchFavoritesMatches()
     }
 
-    suspend fun getMatches(): MatchesRes {
+    override fun getFavoritesMatchesIds(): Flow<List<Int>> {
+        return localMatchesDS.fetchFavoriteMatchIDs()
+    }
+
+    override suspend fun getMatches(): MatchesRes {
         return remoteMatchesDS.fetchMatches()
     }
 
-    suspend fun addFavoriteMatch(match: Match) {
+    override fun addFavoriteMatch(match: Match) {
         return localMatchesDS.addFavoriteMatch(match)
     }
 
-    suspend fun removeFavoriteMatch(match: Match) {
+    override fun removeFavoriteMatch(match: Match) {
         return localMatchesDS.removeFavoriteMatch(match)
     }
 

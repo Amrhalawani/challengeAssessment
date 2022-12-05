@@ -21,10 +21,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amrh.data.matches.MatchesUseCases
 import com.amrh.data.matches.pojo.GroupedMatches
 import com.amrh.data.matches.pojo.Match
 import com.amrh.data.matches.remote.Result
+import com.amrh.data.matches.repo.MatchesUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -40,8 +40,14 @@ class MatchesViewModel @Inject constructor(
 
     val stateMatches: LiveData<Result<GroupedMatches>> = _stateMatches
 
+
+    private val _stateFavoritesMatchesIds: MutableLiveData<List<Int>> = MutableLiveData()
+
+    val stateFavoritesMatchesIds: LiveData<List<Int>> = _stateFavoritesMatchesIds
+
     init {
         getMatches()
+        getFavoriteMatchesIds()
     }
 
     private fun getMatches() {
@@ -72,12 +78,26 @@ class MatchesViewModel @Inject constructor(
         }
     }
 
-    private fun getFavoriteMatches(match: Match) {
+    private fun getFavoriteMatches() {
         viewModelScope.launch(Dispatchers.IO) {
-            matchesUseCase.getFavoriteMatches().collectLatest {
+            matchesUseCase.getFavoriteMatches()
+        }
+    }
 
+
+    fun getFavoriteMatchesIds() {
+        viewModelScope.launch(Dispatchers.IO) {
+            matchesUseCase.getFavoriteMatchesIds().collectLatest {
+                _stateFavoritesMatchesIds.postValue(it)
             }
         }
+    }
+
+     fun convertMatchesFavStatesDependsOnIds(
+        favoritesIds: MutableList<Int>,
+        sectionedByDateMap: Map<String, List<Match>>
+    ): Map<String, List<Match>> {
+        return matchesUseCase.convertMatchesFavStatesDependsOnIds(favoritesIds, sectionedByDateMap)
     }
 
     fun removeFavoriteMatch(match: Match) {
@@ -85,6 +105,7 @@ class MatchesViewModel @Inject constructor(
             matchesUseCase.removeFavoriteMatch(match)
         }
     }
+
 
 }
 

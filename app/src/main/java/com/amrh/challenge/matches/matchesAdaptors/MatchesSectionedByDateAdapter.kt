@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.amrh.challenge.databinding.ItemMatchesSectionedByDayBinding
-import com.amrh.challenge.utils.showToast
-
 import com.amrh.data.matches.pojo.Match
 import javax.inject.Inject
 
@@ -31,10 +29,8 @@ class MatchesSectionedByDateAdapter @Inject constructor() :
     override fun getItemCount(): Int = sectionedByDateMap.size
 
     override fun onBindViewHolder(holder: DateViewHolder, position: Int) {
-
         val date = sectionedByDateMap.keys.toList()[position]
         holder.bind(sectionedByDateMap[date], date)
-
     }
 
     interface MatchesSectionedByDateListener {
@@ -51,7 +47,6 @@ class MatchesSectionedByDateAdapter @Inject constructor() :
             }
             binding.rvMatches.adapter = adapter
             adapter.updateList(matches)
-
             binding.textDay.text = date
 
         }

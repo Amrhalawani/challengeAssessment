@@ -9,7 +9,6 @@ import app.cash.turbine.test
 import com.amrh.data.matches.local.db.FavoriteMatchesDao
 import com.amrh.data.matches.local.db.MatchesDatabase
 import com.amrh.data.matches.pojo.FakeMatchResource
-import com.amrh.data.matches.pojo.Match
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -55,17 +54,38 @@ class MatchesDatabaseTest {
     }
 
     @Test
+    fun selectAllIdsOnlyFromDataBase() = runBlocking {
+        val fakeMatch = FakeMatchResource(20, "2021-10-31T12:30:00Z")
+        val fakeMatch2 = FakeMatchResource(21, "2021-10-31T12:30:00Z")
+
+        favDao.insertMatch(fakeMatch)
+        favDao.insertMatch(fakeMatch2)
+
+        //actual
+        val actual = favDao.selectFavoriteMatchIDs()
+        val expected = listOf(20, 21)
+
+        actual.test {
+            val awaitItem = awaitItem()
+
+            assertEquals(expected[1], awaitItem[1])
+            assertEquals(expected[0], awaitItem[0])
+
+        }
+    }
+
+    @Test
     fun delete_match_item() = runBlocking {
         val match = FakeMatchResource(888, "2021-10-31T12:30:00Z")
         favDao.insertMatch(match)
         favDao.deleteFavoriteMatch(match)
 
-        val actualMatch =  favDao.selectFavoriteMatch(match.id.toString())
+        val actualMatch = favDao.selectFavoriteMatch(match.id.toString())
         actualMatch.test {
 
             assertEquals(null, awaitItem())
 
-           // assertThat(allList).doesNotContain(actualMatch)
+            // assertThat(allList).doesNotContain(actualMatch)
         }
 
 

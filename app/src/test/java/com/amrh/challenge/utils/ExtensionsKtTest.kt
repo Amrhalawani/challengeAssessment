@@ -1,7 +1,5 @@
 package com.amrh.challenge.utils
 
-import com.amrh.data.matches.pojo.FakeMatchResource
-import com.amrh.data.matches.pojo.Match
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -9,7 +7,7 @@ class ExtensionsKtTest {
 
     @Test
     fun getDate() {
-        val actual = getDateFormattedYYYYMMDD("2022-07-01T14:00:00Z")
+        val actual = formatDate("2022-07-01T14:00:00Z")
 
         val expected = "Fri, 1 Jul 2022"
         assertEquals(expected, actual)
@@ -19,7 +17,7 @@ class ExtensionsKtTest {
     @Test
     fun getTime() {
 
-        val actual = getTimeFormattedHHMM("2023-05-06T14:00:00Z")
+        val actual = formatTimeHHMM("2023-05-06T14:00:00Z")
 
         val expected = "14:00"
         assertEquals(expected, actual)

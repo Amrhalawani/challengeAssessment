@@ -10,14 +10,14 @@ import com.amrh.challenge.R
 import com.amrh.challenge.databinding.FragmentFavoritesMatchesBinding
 import com.amrh.challenge.matches.matchesAdaptors.MatchesSectionedByDateAdapter
 import com.amrh.challenge.utils.gone
-import com.amrh.challenge.utils.showToast
 import com.amrh.challenge.utils.visible
 import com.amrh.data.matches.pojo.Match
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FavoritesMatchesFragment : Fragment(), MatchesSectionedByDateAdapter.MatchesSectionedByDateListener {
+class FavoritesMatchesFragment : Fragment(),
+    MatchesSectionedByDateAdapter.MatchesSectionedByDateListener {
 
     val viewModel: FavoriteMatchesViewModel by viewModels()
 
@@ -44,23 +44,27 @@ class FavoritesMatchesFragment : Fragment(), MatchesSectionedByDateAdapter.Match
         setupFavoriteAdapter()
         observeFavoriteMatches()
         listeners()
+
     }
 
     private fun setupFavoriteAdapter() {
-        binding.rvAllMatches.adapter = adapter
+        binding.rvFavMatches.adapter = adapter
+        adapter.listener = this
     }
 
     private fun observeFavoriteMatches() {
 
         viewModel.stateFavoritesMatches.observe(viewLifecycleOwner) { result ->
-            context?.showToast(result.size.toString())
-            if (result.size>0){
+            if (result.size > 0) {
                 adapter.updateMatchesMap(result)
                 binding.textEmpty.gone()
+                binding.rvFavMatches.visible()
             } else {
+                binding.rvFavMatches.gone()
                 binding.textEmpty.visible()
             }
-    }}
+        }
+    }
 
     private fun listeners() {
         binding.include.llShowFav.setOnClickListener {
@@ -69,7 +73,6 @@ class FavoritesMatchesFragment : Fragment(), MatchesSectionedByDateAdapter.Match
     }
 
     private fun fillUi() {
-
         binding.include?.textShowFav?.text = getString(R.string.show_all)
         binding.include?.imageShowFavorites?.setImageResource(R.drawable.ic_view_all)
     }
@@ -80,8 +83,7 @@ class FavoritesMatchesFragment : Fragment(), MatchesSectionedByDateAdapter.Match
     }
 
     override fun onClicked(match: Match, isFavorite: Boolean) {
-
+        viewModel.removeFavoriteMatch(match)
     }
-
 
 }
