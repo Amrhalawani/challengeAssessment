@@ -24,8 +24,7 @@ the app used V2.
 It's all about the Separation Of concerns, which is the main key for most of the best practice solutions.
 
 so the app is organized into loosely coupled and self contained parts. Each part is a module
-(data module, app UI module, utils, and our custom code 
-
+(data module, app UI module, utils, and our customCode module,  multi modules Reduce app build time and support Parallel working.
 
 The App uses Multi Module approuch :
 #### Data module: 
@@ -66,7 +65,7 @@ so the inner adaptor is responsible for notifying the duo to it get the interact
  i used junit4 and sometimes truth, turbine helper, so for now I tested the database and main functions of useCases.
 ### Future changes
 for the time given and depending on my available time, I took some decisions not lead to The most suitable choice. 
-- as I said SOC is the main key, so for the UI instead of using adaptors and sealed viewholders and complex logic that increase coupling and increase cohesion, Jetpack Compose will make life so much easier, also declarative ui makes custom views very easy to maintain and reusable.
+- as I said SOC is the main key, so for the UI instead of using adaptors and sealed viewholders and complex logic that increase coupling and decrease cohesion, so Jetpack Compose will make life so much easier, also declarative ui makes custom views very easy to maintain and reusable.
 - at first glance and for the UI decision i choose the wrong main data structure (map of <string, list<matches>> ),  it was a wrong decision and make some functions more complex, which lead the project to take more time to render.
 - feedback control is finished but needs more testing. 
 
